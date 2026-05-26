@@ -3,7 +3,7 @@ const { queryAll, queryOne, runSql } = require('../database');
 const { authenticateAdmin, loginAdmin, logoutAdmin } = require('../middleware/auth');
 const router = express.Router();
 
-router.post('/login', (req, res) => {
+router.post('/login', loginLimiter, (req, res) => {
     try {
         const { username, password } = req.body;
         if (!username || !password) return res.status(400).json({ error: 'Username and password required' });
