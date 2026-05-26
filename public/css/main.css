@@ -23,7 +23,7 @@
     --success: #38a169;
     --danger: #e53e3e;
     --warning: #dd6b20;
-    --radius: 16px;
+    --radius: 24px;
     --radius-sm: 10px;
     --radius-full: 9999px;
     --shadow: 0 8px 32px rgba(0,0,0,0.3);
@@ -63,7 +63,7 @@ img { max-width: 100%; display: block; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
 /* ===== Section ===== */
-.section { padding: 100px 0; position: relative; }
+.section { padding: 120px 0; position: relative; perspective: 1200px; }
 .section-alt { background: var(--bg-section); }
 .section-header { text-align: center; margin-bottom: 60px; }
 .section-header h2 { margin-bottom: 12px; }
@@ -126,8 +126,9 @@ img { max-width: 100%; display: block; }
 /* ===== Cards ===== */
 .card {
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 32px; transition: var(--transition);
-    position: relative; overflow: hidden;
+    border-radius: var(--radius); padding: 40px; transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+    position: relative; overflow: visible; /* Changed from hidden to allow 3D popout */
+    transform-style: preserve-3d;
 }
 .card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;

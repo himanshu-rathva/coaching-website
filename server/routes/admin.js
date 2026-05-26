@@ -1,5 +1,13 @@
 const express = require('express');
+const rateLimit = require('express-rate-limit');
 const { queryAll, queryOne, runSql } = require('../database');
+
+// Strict Brute-Force Protection for Login
+const loginLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000, // 1 hour
+    max: 5, // Limit each IP to 5 login requests per hour
+    message: { error: 'Too many login attempts from this IP, please try again after an hour.' }
+});
 const { authenticateAdmin, loginAdmin, logoutAdmin } = require('../middleware/auth');
 const router = express.Router();
 
