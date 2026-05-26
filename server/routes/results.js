@@ -1,7 +1,9 @@
 const express = require('express');
 const { queryAll, runSql } = require('../database');
+const { authenticateAdmin } = require('../middleware/auth'); // 👈 Security Guard ko bulaya
 const router = express.Router();
 
+// Public: Everyone can see results on frontend
 router.get('/', (req, res) => {
     try {
         const { year, class: cls } = req.query;
@@ -16,12 +18,14 @@ router.get('/', (req, res) => {
     } catch (err) { res.status(500).json({ error: 'Failed to fetch results' }); }
 });
 
+// Public
 router.get('/years', (req, res) => {
     try { res.json(queryAll('SELECT DISTINCT year FROM results ORDER BY year DESC').map(y => y.year)); }
     catch (err) { res.status(500).json({ error: 'Failed to fetch years' }); }
 });
 
-router.post('/', (req, res) => {
+// 🔒 SECURED: Only admin can post new results
+router.post('/', authenticateAdmin, (req, res) => {
     try {
         const { student_name, class: cls, year, percentage, rank, board, subject_highlight } = req.body;
         if (!student_name || !cls || !year || !percentage) return res.status(400).json({ error: 'Required fields missing' });
@@ -31,7 +35,8 @@ router.post('/', (req, res) => {
     } catch (err) { res.status(500).json({ error: 'Failed to add result' }); }
 });
 
-router.delete('/:id', (req, res) => {
+// 🔒 SECURED: Only admin can delete results
+router.delete('/:id', authenticateAdmin, (req, res) => {
     try { runSql('DELETE FROM results WHERE id = ?', [req.params.id]); res.json({ success: true }); }
     catch (err) { res.status(500).json({ error: 'Failed to delete' }); }
 });
