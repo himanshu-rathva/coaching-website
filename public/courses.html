@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pages.css">
     <link rel="stylesheet" href="css/premium.css">
+    <link rel="stylesheet" href="css/courses-v2.css">
 </head>
 <body>
-    <nav class="navbar" id="navbar"><div class="nav-container"><a href="index.html" class="nav-logo"><div class="logo-icon">E</div><div class="logo-text">Edu<span>Spark</span></div></a><ul class="nav-links" id="navLinks"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="courses.html" class="active">Courses</a></li><li><a href="faculty.html">Faculty</a></li><li><a href="results.html">Results</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li><li><a href="contact.html#enquiry" class="nav-cta">Enroll Now</a></li></ul><div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div></div></nav>
+    <nav class="navbar" id="navbar"><div class="nav-container"><a href="index.html" class="nav-logo"><div class="logo-icon">E</div><div class="logo-text">Edu<span>Spark</span></div></a><ul class="nav-links" id="navLinks"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="courses.html" class="active">Courses</a></li><li><a href="faculty.html">Faculty</a></li><li><a href="results.html">Results</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li><li><a href="contact.html#enquiry" class="nav-cta">Enroll Now</a></li></ul><button id="nav-theme-btn" class="nav-theme-btn" aria-label="Toggle Theme"></button>
+            <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div></div></nav>
 
     <section class="page-header"><div class="container"><h1>Our Courses</h1><p class="breadcrumb"><a href="index.html">Home</a> → Courses</p></div></section>
 
@@ -18,86 +20,92 @@
         <div class="container">
             <div class="section-header fade-up">
                 <span class="badge badge-accent">Programs</span>
-                <h2>Comprehensive Coaching for Every Class</h2>
+                <h2>Choose Your Path to Excellence</h2>
                 <div class="accent-line"></div>
-                <p>CBSE • ICSE • State Board | All subjects covered</p>
+                <p>Three structured programs designed for every stage of academic growth</p>
             </div>
 
-            <!-- Std 6-8 -->
-            <div class="card course-detail-card fade-up" style="margin-bottom:32px">
-                <div class="course-detail-header">
-                    <div><h2>📗 Standard 6 - 8</h2><p style="color:rgba(255,255,255,0.7);margin-top:4px">Foundation Building Program</p></div>
-                    <span class="badge badge-accent" style="font-size:0.9rem;padding:8px 20px">₹2,500/month</span>
-                </div>
-                <div class="course-detail-body">
-                    <p style="margin-bottom:20px">Build a rock-solid foundation in core subjects. Focus on conceptual clarity, mental math, and scientific thinking.</p>
-                    <div class="subject-grid">
-                        <div class="subject-chip"><span class="subject-icon">📐</span> Mathematics</div>
-                        <div class="subject-chip"><span class="subject-icon">🔬</span> Science</div>
-                        <div class="subject-chip"><span class="subject-icon">📖</span> English</div>
-                        <div class="subject-chip"><span class="subject-icon">🌍</span> Social Science</div>
-                        <div class="subject-chip"><span class="subject-icon">📝</span> Hindi</div>
-                        <div class="subject-chip"><span class="subject-icon">🔤</span> Sanskrit</div>
+            <div class="courses-bento fade-up">
+                <!-- Card 1: Foundation -->
+                <div class="course-bento-card">
+                    <div class="course-bento-tag">Foundation</div>
+                    <div class="course-bento-icon">📐</div>
+                    <h3>Standard 6 - 8</h3>
+                    <p class="course-bento-desc">Build rock-solid fundamentals in core subjects. Focus on conceptual clarity, mental math, and scientific thinking.</p>
+                    <div class="course-bento-subjects">
+                        <span>Mathematics</span>
+                        <span>Science</span>
+                        <span>English</span>
+                        <span>Social Science</span>
+                        <span>Hindi</span>
+                        <span>Sanskrit</span>
                     </div>
-                    <div class="batch-info">
-                        <h4>🕐 Batch Timings</h4>
-                        <p style="color:var(--text-secondary)">Morning Batch: 7:00 AM - 9:00 AM | Evening Batch: 4:00 PM - 6:00 PM</p>
-                        <p style="color:var(--text-secondary);margin-top:4px">Batch Size: Max 25 students | 6 days/week</p>
+                    <div class="course-bento-meta">
+                        <div class="meta-item"><span class="meta-icon">🕐</span> Morning 7-9 AM | Evening 4-6 PM</div>
+                        <div class="meta-item"><span class="meta-icon">👥</span> Max 25 Students per Batch</div>
+                        <div class="meta-item"><span class="meta-icon">📅</span> 6 Days/Week</div>
+                    </div>
+                    <div class="course-bento-footer">
+                        <div class="course-bento-price">₹2,500<span>/month</span></div>
+                        <a href="contact.html#enquiry" class="btn btn-secondary">Enquire →</a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Board Prep (Featured) -->
+                <div class="course-bento-card featured">
+                    <div class="course-bento-popular">⭐ Most Popular</div>
+                    <div class="course-bento-tag">Board Prep</div>
+                    <div class="course-bento-icon">🎯</div>
+                    <h3>Standard 9 - 10</h3>
+                    <p class="course-bento-desc">Intensive board exam preparation with mock tests, previous year papers, and exam strategy training for maximum marks.</p>
+                    <div class="course-bento-subjects">
+                        <span>Mathematics</span>
+                        <span>Physics</span>
+                        <span>Chemistry</span>
+                        <span>Biology</span>
+                        <span>Social Science</span>
+                        <span>English</span>
+                        <span>Hindi</span>
+                    </div>
+                    <div class="course-bento-meta">
+                        <div class="meta-item"><span class="meta-icon">🕐</span> Morning 6:30-9 AM | Evening 4-6:30 PM</div>
+                        <div class="meta-item"><span class="meta-icon">📝</span> Special Sunday Test Series</div>
+                        <div class="meta-item"><span class="meta-icon">👥</span> Max 25 Students | 6 Days/Week</div>
+                    </div>
+                    <div class="course-bento-footer">
+                        <div class="course-bento-price">₹3,500<span>/month</span></div>
+                        <a href="contact.html#enquiry" class="btn btn-primary">Enquire →</a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Advanced -->
+                <div class="course-bento-card">
+                    <div class="course-bento-tag">Advanced</div>
+                    <div class="course-bento-icon">🚀</div>
+                    <h3>Standard 11 - 12</h3>
+                    <p class="course-bento-desc">Advanced coaching for Science stream with integrated JEE/NEET foundation. Board + competitive exam prep in parallel.</p>
+                    <div class="course-bento-subjects">
+                        <span>Physics</span>
+                        <span>Chemistry</span>
+                        <span>Mathematics</span>
+                        <span>Biology</span>
+                        <span>JEE Foundation</span>
+                        <span>NEET Prep</span>
+                    </div>
+                    <div class="course-bento-meta">
+                        <div class="meta-item"><span class="meta-icon">🕐</span> Morning 6-9 AM | Evening 4:30-7:30 PM</div>
+                        <div class="meta-item"><span class="meta-icon">🎓</span> Weekend JEE/NEET Sessions</div>
+                        <div class="meta-item"><span class="meta-icon">👥</span> Max 20 Students per Batch</div>
+                    </div>
+                    <div class="course-bento-footer">
+                        <div class="course-bento-price">₹4,500<span>/month</span></div>
+                        <a href="contact.html#enquiry" class="btn btn-secondary">Enquire →</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Std 9-10 -->
-            <div class="card course-detail-card fade-up" style="margin-bottom:32px;border-color:var(--border-accent)">
-                <div class="course-detail-header" style="background:linear-gradient(135deg,#1a365d,#d69e2e)">
-                    <div><h2>📘 Standard 9 - 10</h2><p style="color:rgba(255,255,255,0.7);margin-top:4px">Board Exam Preparation ⭐ Most Popular</p></div>
-                    <span class="badge badge-accent" style="font-size:0.9rem;padding:8px 20px">₹3,500/month</span>
-                </div>
-                <div class="course-detail-body">
-                    <p style="margin-bottom:20px">Intensive board exam preparation with focus on scoring maximum marks. Includes mock tests, previous year paper solving, and exam strategy training.</p>
-                    <div class="subject-grid">
-                        <div class="subject-chip"><span class="subject-icon">📐</span> Mathematics</div>
-                        <div class="subject-chip"><span class="subject-icon">⚡</span> Physics</div>
-                        <div class="subject-chip"><span class="subject-icon">🧪</span> Chemistry</div>
-                        <div class="subject-chip"><span class="subject-icon">🧬</span> Biology</div>
-                        <div class="subject-chip"><span class="subject-icon">🌍</span> Social Science</div>
-                        <div class="subject-chip"><span class="subject-icon">📖</span> English</div>
-                        <div class="subject-chip"><span class="subject-icon">📝</span> Hindi</div>
-                    </div>
-                    <div class="batch-info">
-                        <h4>🕐 Batch Timings</h4>
-                        <p style="color:var(--text-secondary)">Morning: 6:30 AM - 9:00 AM | Evening: 4:00 PM - 6:30 PM</p>
-                        <p style="color:var(--text-secondary);margin-top:4px">Special Sunday Test Series | Batch Size: Max 25 | 6 days/week</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Std 11-12 -->
-            <div class="card course-detail-card fade-up" style="margin-bottom:32px">
-                <div class="course-detail-header">
-                    <div><h2>📕 Standard 11 - 12</h2><p style="color:rgba(255,255,255,0.7);margin-top:4px">Advanced + JEE/NEET Foundation</p></div>
-                    <span class="badge badge-accent" style="font-size:0.9rem;padding:8px 20px">₹4,500/month</span>
-                </div>
-                <div class="course-detail-body">
-                    <p style="margin-bottom:20px">Advanced coaching for Science stream with integrated JEE/NEET foundation. Board exam + competitive exam preparation in parallel.</p>
-                    <div class="subject-grid">
-                        <div class="subject-chip"><span class="subject-icon">⚡</span> Physics</div>
-                        <div class="subject-chip"><span class="subject-icon">🧪</span> Chemistry</div>
-                        <div class="subject-chip"><span class="subject-icon">📐</span> Mathematics</div>
-                        <div class="subject-chip"><span class="subject-icon">🧬</span> Biology</div>
-                        <div class="subject-chip"><span class="subject-icon">🎯</span> JEE Foundation</div>
-                        <div class="subject-chip"><span class="subject-icon">🏥</span> NEET Prep</div>
-                    </div>
-                    <div class="batch-info">
-                        <h4>🕐 Batch Timings</h4>
-                        <p style="color:var(--text-secondary)">Morning: 6:00 AM - 9:00 AM | Evening: 4:30 PM - 7:30 PM</p>
-                        <p style="color:var(--text-secondary);margin-top:4px">Dedicated JEE/NEET sessions on weekends | Batch Size: Max 20</p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align:center" class="fade-up">
-                <a href="contact.html#enquiry" class="btn btn-primary">📝 Enquire Now — Free Demo Class</a>
+            <div style="text-align:center;margin-top:48px" class="fade-up">
+                <a href="contact.html#enquiry" class="btn btn-primary">📞 Enquire Now → Free Demo Class</a>
             </div>
         </div>
     </section>

@@ -1,0 +1,171 @@
+/* ===============================================
+   COURSES PAGE v2.0 - Bento Grid Design
+   Inspired by: Stripe Pricing, Linear.app Cards
+   =============================================== */
+
+.courses-bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.course-bento-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: border-color 0.5s var(--premium-ease), box-shadow 0.5s var(--premium-ease), transform 0.5s var(--premium-ease);
+    overflow: hidden;
+}
+.course-bento-card:hover {
+    border-color: rgba(232, 168, 56, 0.2);
+    box-shadow: 0 12px 40px var(--shadow-ambient);
+    transform: translateY(-4px);
+}
+
+/* Featured Card */
+.course-bento-card.featured {
+    border-color: rgba(232, 168, 56, 0.3);
+    background: linear-gradient(180deg, rgba(232, 168, 56, 0.04) 0%, var(--bg-card) 40%);
+}
+.course-bento-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+}
+.course-bento-popular {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: rgba(232, 168, 56, 0.12);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.course-bento-tag {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+}
+
+.course-bento-icon {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+    line-height: 1;
+}
+
+.course-bento-card h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.course-bento-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* Subject Tags */
+.course-bento-subjects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+.course-bento-subjects span {
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.3s var(--premium-ease);
+}
+.course-bento-subjects span:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(232, 168, 56, 0.06);
+}
+
+/* Meta Info */
+.course-bento-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding: 20px;
+    background: rgba(255,255,255,0.02);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+}
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+}
+.meta-icon {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* Footer (Price + CTA) */
+.course-bento-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+.course-bento-price {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+.course-bento-price span {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+/* Light Mode Overrides */
+[data-theme="light"] .course-bento-card {
+    background: rgba(255,255,255,0.9);
+}
+[data-theme="light"] .course-bento-card.featured {
+    background: linear-gradient(180deg, rgba(193, 127, 36, 0.03) 0%, rgba(255,255,255,0.9) 40%);
+}
+[data-theme="light"] .course-bento-subjects span {
+    background: rgba(0,0,0,0.02);
+    border-color: rgba(0,0,0,0.06);
+}
+[data-theme="light"] .course-bento-meta {
+    background: rgba(0,0,0,0.02);
+    border-color: rgba(0,0,0,0.05);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .courses-bento { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+}

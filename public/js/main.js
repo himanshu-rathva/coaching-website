@@ -216,38 +216,39 @@ function initMagneticButtons() {
     });
 }
 
+// THEME TOGGLE REMOVED (moved to navbar)
+
+
+
 // ===============================================
-// FLOATING THEME TOGGLE (Dark / Light Mode)
+// NAVBAR THEME TOGGLE (Top bar, proper position)
 // ===============================================
-function initFloatingThemeToggle() {
-    var toggleBtn = document.createElement('button');
-    toggleBtn.id = 'floating-theme-toggle';
-    toggleBtn.className = 'floating-theme-toggle';
-    toggleBtn.setAttribute('aria-label', 'Toggle Dark/Light Mode');
-    document.body.appendChild(toggleBtn);
+function initNavbarThemeToggle() {
+    var btn = document.getElementById('nav-theme-btn');
+    if (!btn) return;
 
     var root = document.documentElement;
-    var savedTheme = localStorage.getItem('eduspark-theme') || 'dark';
-    root.setAttribute('data-theme', savedTheme);
-    setToggleIcon(toggleBtn, savedTheme);
+    var saved = localStorage.getItem('eduspark-theme') || 'dark';
+    root.setAttribute('data-theme', saved);
+    renderThemeIcon(btn, saved);
 
-    toggleBtn.addEventListener('click', function() {
+    btn.addEventListener('click', function() {
         var current = root.getAttribute('data-theme');
         var next = (current === 'dark') ? 'light' : 'dark';
-        document.body.style.transition = 'background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
         root.setAttribute('data-theme', next);
         localStorage.setItem('eduspark-theme', next);
-        setToggleIcon(toggleBtn, next);
+        renderThemeIcon(btn, next);
     });
 }
 
-function setToggleIcon(btn, theme) {
+function renderThemeIcon(btn, theme) {
     if (theme === 'dark') {
-        btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+        // Sun icon = click to go light
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
     } else {
-        btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        // Moon icon = click to go dark
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
     }
-    btn.style.color = 'var(--text-primary)';
 }
 
 // ===============================================
@@ -256,5 +257,5 @@ function setToggleIcon(btn, theme) {
 document.addEventListener('DOMContentLoaded', function() {
     initScrollReveal();
     initMagneticButtons();
-    initFloatingThemeToggle();
+    initNavbarThemeToggle();
 });
