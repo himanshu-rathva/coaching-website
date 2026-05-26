@@ -4,35 +4,32 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --primary: #1a365d;
-    --primary-light: #2b6cb0;
-    --primary-dark: #0f2440;
-    --accent: #d69e2e;
-    --accent-light: #ecc94b;
-    --accent-glow: rgba(214,158,46,0.3);
-    --bg-body: #0a0e1a;
-    --bg-section: #0f1526;
-    --bg-card: #151d30;
-    --bg-card-hover: #1a2540;
-    --bg-glass: rgba(21,29,48,0.7);
-    --border: rgba(255,255,255,0.06);
-    --border-accent: rgba(214,158,46,0.3);
-    --text-primary: #f0f4ff;
-    --text-secondary: #8a95b0;
-    --text-muted: #5a6580;
-    --success: #38a169;
-    --danger: #e53e3e;
-    --warning: #dd6b20;
-    --radius: 24px;
-    --radius-sm: 10px;
-    --radius-full: 9999px;
-    --shadow: 0 8px 32px rgba(0,0,0,0.3);
-    --shadow-glow: 0 0 30px rgba(43,108,176,0.15);
-    --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-    --font-heading: 'Outfit', sans-serif;
+    /* Obsidian & Champagne Gold Premium Palette */
+    --primary: #0a0a0a;
+    --primary-light: #1a1a1a;
+    --primary-dark: #000000;
+    --accent: #d4af37;        /* Champagne Gold */
+    --accent-light: #f3e5ab;  /* Soft Gold Luminous */
+    --bg-body: #050505;       /* True Obsidian */
+    --bg-section: #080808;    /* Slightly lighter obsidian */
+    --bg-card: rgba(15, 15, 15, 0.6);
+    --bg-card-hover: rgba(25, 25, 25, 0.8);
+    --bg-glass: rgba(5, 5, 5, 0.75);
+    
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-muted: #666666;
+    --border: rgba(255, 255, 255, 0.05);
+    --border-accent: rgba(212, 175, 55, 0.3);
+    
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
     --font-body: 'Inter', sans-serif;
-    --font-accent: 'Playfair Display', serif;
-    --nav-height: 80px;
+    
+    --radius: 24px;
+    
+    /* Apple/Stripe-tier Custom Easing */
+    --premium-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition: all 0.6s var(--premium-ease);
 }
 
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -126,7 +123,7 @@ img { max-width: 100%; display: block; }
 /* ===== Cards ===== */
 .card {
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 40px; transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+    border-radius: var(--radius); padding: 40px; transition: transform 0.1s ease-out, box-shadow 0.3s var(--premium-ease);
     position: relative; overflow: visible; /* Changed from hidden to allow 3D popout */
     transform-style: preserve-3d;
 }
@@ -213,9 +210,9 @@ select.form-control { cursor: pointer; appearance: none; background-image: url("
 /* ===== Animations ===== */
 .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.4,0,0.2,1); }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
-.fade-left { opacity: 0; transform: translateX(-30px); transition: all 0.7s ease; }
+.fade-left { opacity: 0; transform: translateX(-30px); transition: all 0.7s var(--premium-ease); }
 .fade-left.visible { opacity: 1; transform: translateX(0); }
-.fade-right { opacity: 0; transform: translateX(30px); transition: all 0.7s ease; }
+.fade-right { opacity: 0; transform: translateX(30px); transition: all 0.7s var(--premium-ease); }
 .fade-right.visible { opacity: 1; transform: translateX(0); }
 
 /* ===== Page Header (inner pages) ===== */
@@ -242,7 +239,7 @@ select.form-control { cursor: pointer; appearance: none; background-image: url("
 .modal {
     background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
     padding: 40px; max-width: 500px; width: 100%; position: relative;
-    animation: modalIn 0.3s ease;
+    animation: modalIn 0.3s var(--premium-ease);
 }
 .modal-close {
     position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
@@ -257,7 +254,7 @@ select.form-control { cursor: pointer; appearance: none; background-image: url("
 .toast-container { position: fixed; top: 100px; right: 24px; z-index: 3000; display: flex; flex-direction: column; gap: 8px; }
 .toast {
     padding: 16px 24px; border-radius: var(--radius-sm); min-width: 300px;
-    display: flex; align-items: center; gap: 12px; animation: slideInRight 0.3s ease;
+    display: flex; align-items: center; gap: 12px; animation: slideInRight 0.3s var(--premium-ease);
     font-weight: 500; font-size: 0.9rem;
 }
 .toast-success { background: rgba(56,161,105,0.95); color: white; }
