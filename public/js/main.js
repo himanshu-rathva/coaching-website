@@ -1,6 +1,6 @@
 // ===== Global Scripts =====
 document.addEventListener('DOMContentLoaded', () => {
-    init3DTiltEffect();
+    
     initNavbar();
     initScrollAnimations();
     initActiveNav();
@@ -164,37 +164,22 @@ function getFooterHTML() {
     </a>`;
 }
 
-// Interactive 3D Tilt Effect
-function init3DTiltEffect() {
-    const cards = document.querySelectorAll('.card, .contact-info-card');
+
+// Theme Toggle Logic
+function initThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle-btn');
+    if (!toggleBtn) return;
     
-    cards.forEach(card => {
-        card.classList.add('tilt-card');
-        
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left; // x position within the element
-            const y = e.clientY - rect.top;  // y position within the element
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            // Calculate rotation (max 10 degrees)
-            const rotateX = ((y - centerY) / centerY) * -10;
-            const rotateY = ((x - centerX) / centerX) * 10;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            // Reset transition for smooth return
-            card.style.transition = 'transform 0.5s ease-out, box-shadow 0.5s ease';
-        });
-        
-        card.addEventListener('mouseenter', () => {
-            // Remove transition during mousemove for zero-lag tracking
-            card.style.transition = 'none';
-        });
+    const root = document.documentElement;
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    root.setAttribute('data-theme', currentTheme);
+    toggleBtn.innerHTML = currentTheme === 'dark' ? '☀️' : '🌙';
+
+    toggleBtn.addEventListener('click', () => {
+        const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        toggleBtn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
     });
 }
+document.addEventListener('DOMContentLoaded', () => { initThemeToggle(); });

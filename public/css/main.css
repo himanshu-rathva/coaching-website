@@ -26,6 +26,8 @@
     --font-body: 'Inter', sans-serif;
     
     --radius: 24px;
+    --shadow-ambient: rgba(0,0,0,0.4);
+    --shadow-hover: rgba(0,0,0,0.8);
     
     /* Apple/Stripe-tier Custom Easing */
     --premium-ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -284,3 +286,35 @@ select.form-control { cursor: pointer; appearance: none; background-image: url("
     .card { padding: 24px; }
     .btn { padding: 12px 24px; font-size: 0.9rem; }
 }
+
+[data-theme="light"] {
+    --primary: #f8fafc;
+    --primary-light: #ffffff;
+    --primary-dark: #e2e8f0;
+    --accent: #d4af37;        
+    --accent-light: #f3e5ab;  
+    --bg-body: #f1f5f9;       
+    --bg-section: #ffffff;    
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-card-hover: rgba(255, 255, 255, 1);
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --border: rgba(0, 0, 0, 0.05);
+    --border-accent: rgba(212, 175, 55, 0.4);
+    
+    --shadow-ambient: rgba(0,0,0,0.05);
+    --shadow-hover: rgba(0,0,0,0.12);
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    background: transparent; border: none; cursor: pointer;
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-primary); transition: var(--transition);
+    margin-right: 16px; font-size: 1.2rem;
+}
+.theme-toggle:hover { background: var(--border); }

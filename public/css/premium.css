@@ -39,7 +39,10 @@
 .gallery-item img {
     transition: transform 0.5s var(--premium-ease);
 }
-.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px var(--shadow-hover);
+}
 
 /* ===== Parallax-like subtle movement ===== */
 .hero-main-image {
@@ -97,27 +100,15 @@ body { animation: pageEntry 0.6s var(--premium-ease); }
 .contact-info-card:hover .info-icon { background: rgba(214,158,46,0.2); }
 
 
-/* ===== 3D Animation & Tilt Effects ===== */
-.tilt-card {
-    transform-style: preserve-3d;
-    will-change: transform;
+/* ===== Minimalist Bento Animations ===== */
+.card, .contact-info-card {
+    transition: transform 0.4s var(--premium-ease), box-shadow 0.4s var(--premium-ease);
+    box-shadow: 0 10px 30px var(--shadow-ambient);
 }
-.tilt-card > * {
-    transform: translateZ(30px); /* Makes content pop out */
+.card:hover, .contact-info-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px var(--shadow-hover), 0 0 0 1px var(--border-accent);
 }
-.tilt-card:hover {
-    box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 40px rgba(212,175,55,0.2);
-    z-index: 10;
-}
-.tilt-card::before {
-    /* Glowing orb behind card */
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(circle at center, rgba(212,175,55,0.2) 0%, transparent 70%);
-    opacity: 0; transition: opacity 0.3s;
-    transform: translateZ(-10px); pointer-events: none;
-}
-.tilt-card:hover::before { opacity: 1; }
-
 /* Enhanced Hero Floating */
 .hero-main-image {
     animation: hero3DFloat 8s var(--premium-ease) infinite;
