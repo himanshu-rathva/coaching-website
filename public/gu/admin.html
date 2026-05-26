@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | એજ્યુસ્પાર્ક એકેડેમી</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+    <!-- Login Section -->
+    <div class="admin-login-page" id="loginSection">
+        <div class="card admin-login-card">
+            <div style="text-align:center;margin-bottom:24px"><div class="logo-icon" style="width:60px;height:60px;font-size:1.8rem;margin:0 auto 12px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-light));color:var(--primary-dark);font-weight:900">E</div></div>
+            <h2>Admin Login</h2>
+            <p class="login-subtitle" style="color:var(--text-muted);font-size:0.9rem">એજ્યુસ્પાર્ક એકેડેમી — Dashboard</p>
+            <form id="loginForm">
+                <div class="form-group"><label>Username</label><input type="text" class="form-control" id="loginUser" required placeholder="Enter username"></div>
+                <div class="form-group"><label>Password</label><input type="password" class="form-control" id="loginPass" required placeholder="Enter password"></div>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Login →</button>
+            </form>
+            <p style="text-align:center;margin-top:20px;font-size:0.8rem;color:var(--text-muted)">Demo: admin / admin123</p>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div class="admin-layout" id="dashboardSection" style="display:none">
+        <aside class="admin-sidebar">
+            <div style="padding:0 24px 24px;border-bottom:1px solid var(--border);margin-bottom:16px">
+                <a href="index.html" class="nav-logo"><div class="logo-icon" style="width:36px;height:36px;font-size:1.1rem">E</div><div class="logo-text" style="font-size:1.1rem">Edu<span>Spark</span></div></a>
+                <p style="font-size:0.75rem;color:var(--text-muted);margin-top:8px">Admin Dashboard</p>
+            </div>
+            <button class="sidebar-item active" data-section="dashboard">📊 Dashboard</button>
+            <button class="sidebar-item" data-section="enquiries">📝 Enquiries</button>
+            <button class="sidebar-item" data-section="contacts">✉️ Messages</button>
+            <button class="sidebar-item" data-section="results">🏆 પરિણામો</button>
+            <div style="flex:1"></div>
+            <button class="sidebar-item" onclick="adminLogout()" style="color:var(--danger);margin-top:auto">🚪 Logout</button>
+        </aside>
+
+        <main class="admin-main">
+            <!-- Dashboard -->
+            <div class="admin-section" id="section-dashboard">
+                <div class="admin-header"><h2>📊 Dashboard Overview</h2><a href="index.html" class="btn btn-secondary btn-sm">View Website →</a></div>
+                <div class="admin-stats">
+                    <div class="admin-stat-card"><div class="stat-value" id="statEnquiries">0</div><div class="stat-label">Total Enquiries</div></div>
+                    <div class="admin-stat-card"><div class="stat-value" id="statNewEnquiries" style="color:var(--warning)">0</div><div class="stat-label">New Enquiries</div></div>
+                    <div class="admin-stat-card"><div class="stat-value" id="statસંપર્કs">0</div><div class="stat-label">Messages</div></div>
+                    <div class="admin-stat-card"><div class="stat-value" id="statUnread" style="color:var(--danger)">0</div><div class="stat-label">Unread Messages</div></div>
+                </div>
+                <div class="card" style="padding:32px;text-align:center">
+                    <h3 style="margin-bottom:8px">Welcome to EduSpark Admin Panel 👋</h3>
+                    <p>Manage enquiries, view contact messages, and update student results from here.</p>
+                </div>
+            </div>
+
+            <!-- Enquiries -->
+            <div class="admin-section" id="section-enquiries" style="display:none">
+                <div class="admin-header"><h2>📝 Student Enquiries</h2></div>
+                <table class="admin-table">
+                    <thead><tr><th>Student / Parent</th><th>Phone</th><th>Class</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+                    <tbody id="enquiriesBody"><tr><td colspan="6" style="text-align:center;padding:40px">Loading...</td></tr></tbody>
+                </table>
+            </div>
+
+            <!-- સંપર્કs -->
+            <div class="admin-section" id="section-contacts" style="display:none">
+                <div class="admin-header"><h2>✉️ સંપર્ક Messages</h2></div>
+                <table class="admin-table">
+                    <thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Message</th><th>Status</th><th>Actions</th></tr></thead>
+                    <tbody id="contactsBody"><tr><td colspan="6" style="text-align:center;padding:40px">Loading...</td></tr></tbody>
+                </table>
+            </div>
+
+            <!-- પરિણામો -->
+            <div class="admin-section" id="section-results" style="display:none">
+                <div class="admin-header"><h2>🏆 Student પરિણામો</h2></div>
+                <table class="admin-table">
+                    <thead><tr><th>Student</th><th>Class</th><th>Year</th><th>Percentage</th><th>Rank</th><th>Actions</th></tr></thead>
+                    <tbody id="resultsBody"><tr><td colspan="6" style="text-align:center;padding:40px">Loading...</td></tr></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
