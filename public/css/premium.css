@@ -114,11 +114,11 @@ body { animation: pageEntry 0.8s var(--premium-ease); }
     background-position: 100% 100%;
 }
 .card:hover {
-    border-color: rgba(212, 175, 55, 0.3);
-    box-shadow: 0 8px 32px var(--shadow-ambient), 0 0 20px rgba(212, 175, 55, 0.08);
+    border-color: rgba(232, 168, 56, 0.3);
+    box-shadow: 0 8px 32px var(--shadow-ambient), 0 0 20px rgba(232, 168, 56, 0.08);
 }
 .contact-info-card:hover {
-    border-color: rgba(212, 175, 55, 0.3);
+    border-color: rgba(232, 168, 56, 0.3);
     box-shadow: 0 4px 20px var(--shadow-ambient);
     transform: translateX(6px);
 }
@@ -143,7 +143,7 @@ body { animation: pageEntry 0.8s var(--premium-ease); }
 
 /* ===== Stat Number Glow ===== */
 .stats-bar .stat-number {
-    text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    text-shadow: 0 0 30px rgba(232, 168, 56, 0.3);
 }
 
 /* ===============================================
@@ -160,7 +160,7 @@ body { animation: pageEntry 0.8s var(--premium-ease); }
 }
 .btn-primary:hover::after { opacity: 0.5; }
 .btn-primary:hover, .btn-secondary:hover {
-    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+    box-shadow: 0 4px 20px rgba(232, 168, 56, 0.25);
 }
 
 /* ===============================================
@@ -184,12 +184,12 @@ body { animation: pageEntry 0.8s var(--premium-ease); }
 .faculty-avatar { transition: transform 0.5s var(--premium-ease), box-shadow 0.5s var(--premium-ease); }
 .faculty-card:hover .faculty-avatar {
     transform: scale(1.06);
-    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 8px 30px rgba(232, 168, 56, 0.3);
 }
 
 /* ===== Topper card glow ===== */
 .topper-card:hover .topper-avatar {
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+    box-shadow: 0 0 25px rgba(232, 168, 56, 0.5);
 }
 
 /* ===============================================
@@ -213,7 +213,7 @@ body { animation: pageEntry 0.8s var(--premium-ease); }
 }
 .floating-theme-toggle:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 28px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 6px 28px rgba(232, 168, 56, 0.3);
     border-color: var(--border-accent);
 }
 .floating-theme-toggle:active {
