@@ -1,15 +1,22 @@
+/* ===============================================
+   PREMIUM ANIMATIONS ENGINE v2.0
+   Style: Scroll Reveal + Magnetic + Border Glow
+   =============================================== */
+
 /* ===== Preloader ===== */
 .preloader {
     position: fixed; inset: 0; z-index: 9999;
     background: var(--bg-body);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    transition: opacity 0.5s ease, visibility 0.5s var(--premium-ease);
+    transition: opacity 0.8s var(--premium-ease), visibility 0.8s var(--premium-ease);
 }
 .preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .preloader-logo {
-    width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
     border-radius: 20px; display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem; font-weight: 900; color: var(--primary-dark); font-family: var(--font-heading);
+    font-size: 2.5rem; font-weight: 900; color: var(--primary-dark);
+    font-family: var(--font-heading);
     animation: preloaderPulse 1.5s var(--premium-ease) infinite;
 }
 .preloader-text {
@@ -28,107 +35,187 @@
 @keyframes preloaderPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 @keyframes preloaderBar { 0% { transform: translateX(-100%); } 100% { transform: translateX(350%); } }
 
-/* ===== Enhanced Gradient Text ===== */
+/* ===== Gradient Text ===== */
 .gradient-text {
     background: linear-gradient(135deg, var(--accent), var(--accent-light), #fff);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-/* ===== Enhanced Image Hover ===== */
-.gallery-item img {
-    transition: transform 0.5s var(--premium-ease);
+/* ===== Smooth page entry ===== */
+body { animation: pageEntry 0.8s var(--premium-ease); }
+@keyframes pageEntry { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===============================================
+   SCROLL REVEAL ANIMATIONS
+   =============================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.9s var(--premium-ease), transform 0.9s var(--premium-ease);
+    will-change: opacity, transform;
 }
-.gallery-item:hover img {
-    transform: scale(1.05);
-    box-shadow: 0 15px 35px var(--shadow-hover);
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.9s var(--premium-ease), transform 0.9s var(--premium-ease);
+    will-change: opacity, transform;
+}
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+.reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.9s var(--premium-ease), transform 0.9s var(--premium-ease);
+    will-change: opacity, transform;
+}
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+.reveal-stagger > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.19s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.26s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 0.33s; }
+.reveal-stagger > *:nth-child(6) { transition-delay: 0.40s; }
+
+/* ===============================================
+   BORDER GLOW CARD HOVER
+   =============================================== */
+.card, .contact-info-card {
+    position: relative;
+    transition: border-color 0.5s var(--premium-ease), box-shadow 0.5s var(--premium-ease);
+    overflow: hidden;
+}
+.card::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, transparent 40%, var(--accent) 50%, transparent 60%);
+    background-size: 300% 300%;
+    background-position: 0% 0%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s var(--premium-ease), background-position 0.8s var(--premium-ease);
+    pointer-events: none;
+}
+.card:hover::before {
+    opacity: 1;
+    background-position: 100% 100%;
+}
+.card:hover {
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 8px 32px var(--shadow-ambient), 0 0 20px rgba(212, 175, 55, 0.08);
+}
+.contact-info-card:hover {
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 20px var(--shadow-ambient);
+    transform: translateX(6px);
 }
 
-/* ===== Parallax-like subtle movement ===== */
+/* ===============================================
+   HERO SECTION
+   =============================================== */
 .hero-main-image {
-    animation: heroImageFloat 8s var(--premium-ease) infinite;
+    animation: heroFloat 6s ease-in-out infinite;
 }
-@keyframes heroImageFloat {
-    0%,100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-8px) rotate(0.5deg); }
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+.hero-badge .dot {
+    animation: dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.5); }
 }
 
-/* ===== Enhanced Stat Numbers ===== */
+/* ===== Stat Number Glow ===== */
 .stats-bar .stat-number {
-    text-shadow: 0 0 40px rgba(255,255,255,0.2);
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
 }
 
-/* ===== Glow effect on accent elements ===== */
-.btn-primary { position: relative; }
+/* ===============================================
+   BUTTON EFFECTS (Magnetic + Glow)
+   =============================================== */
+.btn-primary, .btn-secondary {
+    position: relative;
+    transition: transform 0.25s var(--premium-ease), box-shadow 0.4s var(--premium-ease);
+}
 .btn-primary::after {
     content: ''; position: absolute; inset: -2px; border-radius: inherit;
     background: linear-gradient(135deg, var(--accent), var(--accent-light));
-    z-index: -1; filter: blur(12px); opacity: 0.4; transition: opacity 0.3s;
+    z-index: -1; filter: blur(14px); opacity: 0; transition: opacity 0.4s var(--premium-ease);
 }
-.btn-primary:hover::after { opacity: 0.7; }
-
-/* ===== Smooth page entry ===== */
-body { animation: pageEntry 0.6s var(--premium-ease); }
-@keyframes pageEntry { from { opacity: 0; } to { opacity: 1; } }
-
-/* ===== Better card hover shine effect ===== */
-.card::after {
-    content: ''; position: absolute; top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.03) 50%, transparent 60%);
-    transition: transform 0.6s var(--premium-ease);
-    transform: translateX(-100%) translateY(-100%);
-}
-.card:hover::after {
-    transform: translateX(20%) translateY(20%);
+.btn-primary:hover::after { opacity: 0.5; }
+.btn-primary:hover, .btn-secondary:hover {
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
 }
 
-/* ===== Navbar logo hover ===== */
-.nav-logo:hover .logo-icon { transform: rotate(-5deg) scale(1.05); transition: var(--transition); }
+/* ===============================================
+   GALLERY HOVER
+   =============================================== */
+.gallery-item img {
+    transition: transform 0.6s var(--premium-ease), filter 0.6s var(--premium-ease);
+}
+.gallery-item:hover img {
+    transform: scale(1.06);
+    filter: brightness(1.08);
+}
 
-/* ===== Faculty card image hover ===== */
-.faculty-avatar { transition: var(--transition); }
-.faculty-card:hover .faculty-avatar { transform: scale(1.08); box-shadow: 0 8px 30px rgba(212,175,55,0.4); }
+/* ===== Nav Logo hover ===== */
+.nav-logo:hover .logo-icon {
+    transform: rotate(-5deg) scale(1.05);
+    transition: transform 0.4s var(--premium-ease);
+}
+
+/* ===== Faculty card hover ===== */
+.faculty-avatar { transition: transform 0.5s var(--premium-ease), box-shadow 0.5s var(--premium-ease); }
+.faculty-card:hover .faculty-avatar {
+    transform: scale(1.06);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+}
 
 /* ===== Topper card glow ===== */
 .topper-card:hover .topper-avatar {
-    box-shadow: 0 0 30px rgba(212,175,55,0.6);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
 }
 
-/* ===== Contact info card hover ===== */
-.contact-info-card:hover { transform: translateX(5px); border-color: var(--border-accent); }
-.contact-info-card:hover .info-icon { background: rgba(214,158,46,0.2); }
-
-
-/* ===== Minimalist Bento Animations ===== */
-.card, .contact-info-card {
-    transition: transform 0.4s var(--premium-ease), box-shadow 0.4s var(--premium-ease);
-    box-shadow: 0 10px 30px var(--shadow-ambient);
+/* ===============================================
+   FLOATING THEME TOGGLE BUTTON
+   =============================================== */
+.floating-theme-toggle {
+    position: fixed;
+    bottom: 100px; right: 24px;
+    z-index: 9998;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s var(--premium-ease), box-shadow 0.3s var(--premium-ease), background 0.3s var(--premium-ease);
 }
-.card:hover, .contact-info-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px var(--shadow-hover), 0 0 0 1px var(--border-accent);
+.floating-theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(212, 175, 55, 0.3);
+    border-color: var(--border-accent);
 }
-/* Enhanced Hero Floating */
-.hero-main-image {
-    animation: hero3DFloat 8s var(--premium-ease) infinite;
-    transform-style: preserve-3d;
-}
-@keyframes hero3DFloat {
-    0%,100% { transform: translateY(0) rotateX(2deg) rotateY(-2deg) translateZ(20px); filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6)); }
-    50% { transform: translateY(-15px) rotateX(-2deg) rotateY(2deg) translateZ(40px); filter: drop-shadow(0 40px 40px rgba(0,0,0,0.8)); }
-}
-
-/* Gallery 3D hover */
-.gallery-item {
-    perspective: 1000px;
-    overflow: visible !important;
-}
-.gallery-item img {
-    transition: transform 0.4s var(--premium-ease), box-shadow 0.4s var(--premium-ease);
-}
-.gallery-item:hover img {
-    transform: scale(1.05) translateZ(20px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.8);
-    z-index: 20; position: relative;
+.floating-theme-toggle:active {
+    transform: scale(0.95);
 }

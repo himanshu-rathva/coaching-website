@@ -165,21 +165,96 @@ function getFooterHTML() {
 }
 
 
-// Theme Toggle Logic
-function initThemeToggle() {
-    const toggleBtn = document.getElementById('theme-toggle-btn');
-    if (!toggleBtn) return;
-    
-    const root = document.documentElement;
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    root.setAttribute('data-theme', currentTheme);
-    toggleBtn.innerHTML = currentTheme === 'dark' ? '☀️' : '🌙';
 
-    toggleBtn.addEventListener('click', () => {
-        const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        toggleBtn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+// ===============================================
+// SCROLL REVEAL ENGINE (IntersectionObserver)
+// ===============================================
+function initScrollReveal() {
+    document.querySelectorAll('.fade-up').forEach(function(el) { el.classList.add('reveal'); });
+    document.querySelectorAll('.fade-left').forEach(function(el) { el.classList.add('reveal-left'); });
+    document.querySelectorAll('.fade-right').forEach(function(el) { el.classList.add('reveal-right'); });
+
+    document.querySelectorAll('.card, .section-header, .contact-info-card, .hero-text, .hero-image').forEach(function(el) {
+        if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right')) {
+            el.classList.add('reveal');
+        }
+    });
+
+    var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) {
+        revealObserver.observe(el);
     });
 }
-document.addEventListener('DOMContentLoaded', () => { initThemeToggle(); });
+
+// ===============================================
+// MAGNETIC BUTTON EFFECT
+// ===============================================
+function initMagneticButtons() {
+    var buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .nav-cta');
+    
+    buttons.forEach(function(btn) {
+        btn.addEventListener('mousemove', function(e) {
+            var rect = btn.getBoundingClientRect();
+            var x = e.clientX - rect.left - rect.width / 2;
+            var y = e.clientY - rect.top - rect.height / 2;
+            var moveX = x * 0.15;
+            var moveY = y * 0.15;
+            btn.style.transform = 'translate(' + moveX + 'px, ' + moveY + 'px)';
+        });
+        
+        btn.addEventListener('mouseleave', function() {
+            btn.style.transform = 'translate(0, 0)';
+        });
+    });
+}
+
+// ===============================================
+// FLOATING THEME TOGGLE (Dark / Light Mode)
+// ===============================================
+function initFloatingThemeToggle() {
+    var toggleBtn = document.createElement('button');
+    toggleBtn.id = 'floating-theme-toggle';
+    toggleBtn.className = 'floating-theme-toggle';
+    toggleBtn.setAttribute('aria-label', 'Toggle Dark/Light Mode');
+    document.body.appendChild(toggleBtn);
+
+    var root = document.documentElement;
+    var savedTheme = localStorage.getItem('eduspark-theme') || 'dark';
+    root.setAttribute('data-theme', savedTheme);
+    setToggleIcon(toggleBtn, savedTheme);
+
+    toggleBtn.addEventListener('click', function() {
+        var current = root.getAttribute('data-theme');
+        var next = (current === 'dark') ? 'light' : 'dark';
+        document.body.style.transition = 'background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('eduspark-theme', next);
+        setToggleIcon(toggleBtn, next);
+    });
+}
+
+function setToggleIcon(btn, theme) {
+    if (theme === 'dark') {
+        btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    } else {
+        btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    }
+    btn.style.color = 'var(--text-primary)';
+}
+
+// ===============================================
+// BOOT ALL SYSTEMS
+// ===============================================
+document.addEventListener('DOMContentLoaded', function() {
+    initScrollReveal();
+    initMagneticButtons();
+    initFloatingThemeToggle();
+});
