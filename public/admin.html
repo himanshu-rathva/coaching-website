@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+        (function() {
+            var lang = localStorage.getItem('eduspark-lang');
+            var path = window.location.pathname;
+            var isGu = path.indexOf('/gu/') !== -1;
+            var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+            
+            // Exclude admin pages from redirecting
+            if (page.indexOf('admin') !== -1) return;
+
+            if (lang === 'gu' && !isGu) {
+                window.location.replace('gu/' + page + window.location.search + window.location.hash);
+            } else if (lang === 'en' && isGu) {
+                window.location.replace('../' + page + window.location.search + window.location.hash);
+            }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel | EduSpark Academy</title>

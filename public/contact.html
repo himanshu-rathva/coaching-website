@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+        (function() {
+            var lang = localStorage.getItem('eduspark-lang');
+            var path = window.location.pathname;
+            var isGu = path.indexOf('/gu/') !== -1;
+            var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+            
+            // Exclude admin pages from redirecting
+            if (page.indexOf('admin') !== -1) return;
+
+            if (lang === 'gu' && !isGu) {
+                window.location.replace('gu/' + page + window.location.search + window.location.hash);
+            } else if (lang === 'en' && isGu) {
+                window.location.replace('../' + page + window.location.search + window.location.hash);
+            }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | EduSpark Academy</title>
@@ -11,9 +28,9 @@
 <body>
     <nav class="navbar" id="navbar"><div class="nav-container"><a href="index.html" class="nav-logo"><div class="logo-icon">E</div><div class="logo-text">Edu<span>Spark</span></div></a><ul class="nav-links" id="navLinks"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="courses.html">Courses</a></li><li><a href="faculty.html">Faculty</a></li><li><a href="results.html">Results</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html" class="active">Contact</a></li><li><a href="contact.html#enquiry" class="nav-cta">Enroll Now</a></li></ul>
         <div class="lang-switcher" style="margin-right: 15px; display: flex; align-items: center;">
-            <a href="index.html" style="color: var(--accent); font-weight: bold; text-decoration: none; font-size: 0.9rem; padding: 4px 8px; border-radius: 4px; background: rgba(232, 168, 56, 0.1);">EN</a>
+            <a href="index.html" style="color: var(--accent); font-weight: bold; text-decoration: none; font-size: 0.9rem; padding: 4px 8px; border-radius: 4px; background: rgba(232, 168, 56, 0.1);" onclick="localStorage.setItem('eduspark-lang', 'en')">EN</a>
             <span style="color: var(--border); margin: 0 4px;">|</span>
-            <a href="gu/contact.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; padding: 4px 8px; border-radius: 4px; transition: 0.3s;">GU</a>
+            <a href="gu/contact.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; padding: 4px 8px; border-radius: 4px; transition: 0.3s;" onclick="localStorage.setItem('eduspark-lang', 'gu')">GU</a>
         </div>
 
             <button id="nav-theme-btn" class="nav-theme-btn" aria-label="Toggle Theme"></button>
